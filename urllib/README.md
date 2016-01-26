@@ -31,3 +31,36 @@ urllib, urllib2模块都是python内置的接受url请求的相关模块
         >> data.getcode()  # 返回状态码(200 ok)
         >> data.close()  # 关闭类文件对象
     ````
+
+2. **urllib.urlretrieve(url[, filename[, reporthook[, data]]])** :
+    + urlretrieve函数直接将远程数据下载到本地, 保存在路径为filename的文件中,
+      返回一个包含两个对象的元组(filename, headers)
+    + 参数:
+        + url: 数据资源的标识
+        + filename: 本地保存下载数据的路径(若缺省会生成临时文件)
+        + reporthook: 回调钩子函数(可以用于显示下载进度)
+        + data: post到url的数据
+    + 代码示例(下载github的网页源码并存储到/tmp/github.html, 同时显示下载进度):
+    ````
+        import urllib
+        import sys
+
+        def schedule(data, block, file):
+            """
+            file: 远程文件的大小
+            data: 已下载的数据大小
+            block: 数据块的大小
+            """
+            per = int(100*data*block/file)
+            if per > 100:
+                per = 100
+            sys.stdout.write("%2d%%" % per)
+            sys.stdout.write("\b\b\b")
+            sys.stdout.flush()
+
+        url = 'https://github.com/neo1218'
+        local = '/tmp/github.html'
+
+        urllib.urlretrieve(url, local, reporthook=schedule)
+    ````
+
