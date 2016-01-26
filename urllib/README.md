@@ -2,11 +2,11 @@ urllib 模块
 ===
 urllib, urllib2模块都是python内置的接受url请求的相关模块
 
-## urllib的使用
-
     >> import urllib
     >> # 以下代码会获取github的网页源码并打印
     >> urllib.urlopen('https://github.com/').read()
+
+## urllib的使用
 
 1. **urllib.urlopen(url[,data[,proxies]])** :
     - 返回一个表示远程url的类文件对象,
@@ -63,4 +63,24 @@ urllib, urllib2模块都是python内置的接受url请求的相关模块
 
         urllib.urlretrieve(url, local, reporthook=schedule)
     ````
+
+3. **利用urllib对url进行编解码**
+    + urllib.quote(string[, safe]):
+        + 对字符串(string)进行编码, safe指定了不需要编码的字符, 用'%20'替换' '
+    + urllib.unquote(string):
+        + 对字符串(string)进行解码
+    + urllib.quote_plus(string[, safe]):
+        + 和urllib.quote类似, 但是用'+'替换' '
+    + urllib.unquote_plus(string):
+        + 对字符串(string)进行解码
+    + urllib.urlencode(query[, doseq]):
+        + 将dict或double temple转化为url查询参数的形式, {'name':'neo1218'} =>
+          /?name=neo1218
+    + urllib.pathname2url(path):
+        + 将本地路径转化为url
+    + urllib.url2pathname(url):
+        + 将url转化为本地路径
+
+## 参考
+[Python模块学习 urllib](http://python.jobbole.com/81478/)
 
