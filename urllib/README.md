@@ -21,7 +21,8 @@ urllib, urllib2模块都是python内置的接受url请求的相关模块
         + getcode(): 获取http状态码
         + geturl(): 返回请求的url
     - 代码示例:
-        ````
+
+    ````
         >> import urllib
         >> url = "https://github.com/"
         >> data = urllib.urlopen(url)
@@ -29,4 +30,4 @@ urllib, urllib2模块都是python内置的接受url请求的相关模块
         >> print data.info()  # 输出服务器响应头
         >> data.getcode()  # 返回状态码(200 ok)
         >> data.close()  # 关闭类文件对象
-        ````
+    ````
