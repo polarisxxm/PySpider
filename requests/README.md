@@ -68,5 +68,87 @@ HTTP for Humans. 相比于urllib, urllib2, requests是继承自urllib3的,
             for chunk in r.iter_content(chunk_size):
                 fd.write(chunk)
         ````
-        # chunk 分块流下载
+
++ **定制请求头**
+    + 只需要简单的给headers参数传递一个dict即可
+    ````
+    >>> import json
+    >>> url = 'https://api.github.com/some/endpoint'
+    >>> payload = {'some': 'data'}
+    >>> headers = {'content-type': 'application/json'}
+    >>> r = requests.post(url, data=json.dumps(payload), headers=headers)
+    ````
+
++ **更加复杂的post请求**
+    + requests 可以将数据字典自动编码为表单形式
+    ````
+    >>> payload = {'key1': 'value1', 'key2': 'value2'}
+    >>> r = requests.post(url, data=payload)
+    >>> r.text
+    {
+        ...
+        "form": {
+            "key1": "value1",
+            "key2": "value2"
+        }
+    }
+    ````
+    + 单独的data_dict将会在请求时自动编码为表单
+    + 传递到headers的data_dict(json编码)将会作为定制头部
+    + 仅json编码的data_dict将直接发布出去
+
++ **POST一个文件**
+    + 使用Requests上传文件很简单(files字典)
+    ````
+    >>> files = {'file': open(filename, 'rb')}
+    >>> r = requests.post(url, files=files)
+    ````
+
++ **响应状态码**
+    + 直接获取响应状态码
+    ````
+    >>> r = request.get('https://api.github.com/users/neo1218')
+    >>> r.status_code
+    200
+    ````
+    + 语义化查询状态码
+    ````
+    >>> r.status_code == requests.codes.ok
+    True
+    ````
+    + 依据状态码引发错误
+    ````
+    >>> bad_r = requests.get('https://httpbin.org/status/404')
+    >>> bad_r.status_code
+    404
+    >>> bad_r.raise_for_status()
+    引发 requests.exceptions.HTTPError: 404 Client Error
+    ````
+
+**响应头**
+    + 我们可以以python字典形式查看服务器响应头
+    ````
+    >>> r.headers
+    ````
+    + 根据[RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)标准, HTTP头部是大小写不敏感的
+    ````
+    >>> r.headers.get('content-type')
+    >>> r.headers.get('Content-Type')
+    ````
+
+**Cookies**
+    + Requests库允许快速访问cookie
+    ````
+    >>> r = requests.get(url)
+    >>> r.cookies['example_cookie_name']
+    example_cookie_value
+    ````
+    + 还可以使用cookies参数发送cookies
+    ````
+    >>> cookies = dict(cookies_are='working')
+    >>> r = requests.get(url, cookies=cookies)
+    ````
+
+**重定向与请求历史**
+
 
