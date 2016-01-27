@@ -125,7 +125,7 @@ HTTP for Humans. 相比于urllib, urllib2, requests是继承自urllib3的,
     引发 requests.exceptions.HTTPError: 404 Client Error
     ````
 
-**响应头**
++ **响应头**
     + 我们可以以python字典形式查看服务器响应头
     ````
     >>> r.headers
@@ -136,7 +136,7 @@ HTTP for Humans. 相比于urllib, urllib2, requests是继承自urllib3的,
     >>> r.headers.get('Content-Type')
     ````
 
-**Cookies**
++ **Cookies**
     + Requests库允许快速访问cookie
     ````
     >>> r = requests.get(url)
