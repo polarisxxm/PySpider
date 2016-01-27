@@ -6,6 +6,8 @@ Python 爬虫学习
     + [代码示例](https://github.com/neo1218/PySpider/blob/master/urllib/urlretrieve_example.py)
 
 + **requests 库**
+    + [requests 库]()
+    + [代码示例]()
 
 + **beautifulsoup4 (bs4)**
 
