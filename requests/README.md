@@ -149,6 +149,12 @@ HTTP for Humans. 相比于urllib, urllib2, requests是继承自urllib3的,
     >>> r = requests.get(url, cookies=cookies)
     ````
 
-**重定向与请求历史**
++ **重定向与请求历史**
+    + Response.history 是一个纪录重定向对象(按事件顺序从老到新排序)的列表
+    +
 
++ **超时**
+
+
++ **错误和异常**
 
