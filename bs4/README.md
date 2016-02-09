@@ -8,7 +8,7 @@ BeautifulSoup
     from bs4 import BeautifulSoup
     soup = BeautifulSoup(html_doc, "lxml")
 
-**1. 获取浏览结构化数据**
+1. **获取浏览结构化数据**
     + <code>soup.title</code>: "<title>this is title</title>"
     + <code>soup.title.name</code>: "<title>"
     + <code>soup.title.string</code>: "this is title"
