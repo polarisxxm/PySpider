@@ -10,6 +10,7 @@ Python 爬虫学习
     + [代码示例]()
 
 + **beautifulsoup4 (bs4)**
+    + [bs4模块](https://github.com/neo1218/PySpider/tree/master/bs4)
 
 + **scrapy 框架**
 
