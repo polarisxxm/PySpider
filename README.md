@@ -13,6 +13,7 @@ Python 爬虫学习
     + [bs4模块](https://github.com/neo1218/PySpider/tree/master/bs4)
 
 + **scrapy 框架**
+    + [scrapy框架](https://github.com/neo1218/PySpider/tree/master/scrapy)
 
 + **爬虫实例**
     + [CET4爬虫](https://github.com/neo1218/CET4-photo)
